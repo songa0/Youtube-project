@@ -50,10 +50,11 @@
   list-style: none;
   padding: 0;
   margin: 2px 0px;
+  columns: 2;
 }
 
 .video__list li {
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -63,7 +64,7 @@
 }
 .video__list li img {
   width: 100px;
-  margin: 0 0.5em;
+  margin: 0 1em 0 0.5em;
 }
 
 .video__title {
