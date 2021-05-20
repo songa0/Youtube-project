@@ -41,6 +41,7 @@
 .youtube__section {
   width: 700px;
   margin: 0 auto;
+  padding: 8px;
 }
 .video__list__view {
 }
@@ -48,11 +49,30 @@
 .video__list {
   list-style: none;
   padding: 0;
+  margin: 2px 0px;
 }
 
 .video__list li {
-  width: 200px;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid rgb(122, 122, 122);
+  box-shadow: 1px 1px 1px rgb(99, 99, 99);
+  margin: 2px;
+}
+.video__list li img {
+  width: 100px;
+  margin: 0 0.5em;
 }
 
-.video_summary {
+.video__title {
+  display: inline-block;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.video__channel {
+  color: gray;
+  font-size: 0.8rem;
 }

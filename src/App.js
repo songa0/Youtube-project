@@ -20,6 +20,13 @@ function App() {
                 <span className='video__channel'>GQ</span>
               </span>
             </li>
+            <li>
+              <img src='/images/logo.png' />
+              <span className='video_summary'>
+                <span className='video__title'>BTS Plays 'This or That'</span>
+                <span className='video__channel'>GQ</span>
+              </span>
+            </li>
           </ul>
         </article>
       </section>
