@@ -1,20 +1,20 @@
 import React from 'react';
 
-const Video = (props) => (
+const Video = props => {
     const { imgSrc, title, channel } = props;
 
     return (
         <li>
-            <img src={ imgSrc} />
-            <span className='video_summary'> 
+            <img src={imgSrc} />
+            <span className='video_summary'>
                 <span className='video__title'>{title}</span>
                 <span className='video__channel'>{channel}</span>
-            </span> 
+            </span>
         </li>
     );
     
             
     
-);
+};
 
 export default Video;
