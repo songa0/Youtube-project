@@ -61,6 +61,8 @@
   border: 1px solid rgb(122, 122, 122);
   box-shadow: 1px 1px 1px rgb(99, 99, 99);
   margin: 2px;
+  height: 120px;
+  break-inside: avoid;
 }
 .video__list li img {
   width: 100px;
