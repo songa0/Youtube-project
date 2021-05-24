@@ -1,7 +1,8 @@
 import React,{ memo } from 'react';
 
 const Video = memo(props => {
-    const {key, imgSrc, channel } = props;
+    const {id, imgSrc, channel } = props;
+    
     const title = ConvertSystemSourcetoHtml(props.title);
     
     function ConvertSystemSourcetoHtml(str){
@@ -14,8 +15,13 @@ const Video = memo(props => {
             .replace(/&#39;/g, "'");
         
     }
+
+    const handleClick = () => {
+        props.handleClick(props.id);
+    }
+    
     return (
-        <li>
+        <li onClick={handleClick}>
             <img src={imgSrc} />
             <span className='video_summary'>
                 <span className='video__title'>{unescape(title)}</span>

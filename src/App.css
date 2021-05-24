@@ -4,7 +4,7 @@
   height: 2rem;
   padding: 0.5em;
   text-align: center;
-  width: 700px;
+  width: 1000px;
   margin: 0 auto;
 }
 .youtube__logo {
@@ -39,9 +39,11 @@
   width: 50%;
 }
 .youtube__section {
-  width: 700px;
+  width: 1000px;
   margin: 0 auto;
   padding: 8px;
+  display: flex;
+  flex-direction: row;
 }
 .video__list__view {
 }
@@ -49,8 +51,8 @@
 .video__list {
   list-style: none;
   padding: 0;
-  margin: 2px 0px;
-  columns: 1;
+  margin: 0px 0px;
+  columns: 2;
 }
 
 .video__list li {
@@ -78,4 +80,38 @@
 .video__channel {
   color: gray;
   font-size: 0.8rem;
+}
+
+.video__play__view {
+  float: left;
+  width: 70%;
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.set2column {
+  columns: 2;
+}
+
+.set1column {
+  columns: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .youtube__header {
+    width: 700px;
+  }
+
+  .youtube__section {
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+  }
 }
