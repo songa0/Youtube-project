@@ -1,7 +1,7 @@
 import React,{ memo } from 'react';
 
 const Video = memo(props => {
-    const {id, imgSrc, channel } = props;
+    const {id, imgSrc, channel, description } = props;
     
     const title = ConvertSystemSourcetoHtml(props.title);
     
@@ -17,14 +17,18 @@ const Video = memo(props => {
     }
 
     const handleClick = () => {
-        props.handleClick(props.id);
+        const videoInfo = {
+            id,
+            description
+        }
+        props.handleClick(videoInfo);
     }
     
     return (
         <li onClick={handleClick}>
             <img src={imgSrc} />
             <span className='video_summary'>
-                <span className='video__title'>{unescape(title)}</span>
+                <span className='video__title'>{title}</span>
                 <span className='video__channel'>{channel}</span>
             </span>
         </li>

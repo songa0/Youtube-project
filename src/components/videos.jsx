@@ -15,6 +15,7 @@ const Videos = (props) => {
                             imgSrc={item.snippet.thumbnails.default.url}
                             title={item.snippet.title}
                             channel={item.snippet.channelTitle}
+                            description={item.snippet.description}
                             handleClick={props.handleClick}
                         />
                         

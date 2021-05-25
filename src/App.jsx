@@ -12,6 +12,7 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [videoUrl, setVideoUrl] = useState(null);
   const [videoClicked, setVideoClicked] = useState(false);
+  const [videoDesc, setVideoDesc] = useState(null);
 
   const requestOptions = {
     method: 'GET',
@@ -22,14 +23,11 @@ function App() {
     } 
   };
 
-  const handleVideoClick = (videoId) => {
-    setVideoUrl(videoId);
+  const handleVideoClick = (videoInfo) => {
+    setVideoUrl(videoInfo.id);
+    setVideoDesc(videoInfo.description);
     setVideoClicked(true);
-    console.log();
   }
-
-  const videoList = React.createRef();
-  const videoPlay = React.createRef();
 
   function callSearchAPI(searchKeyWord) {
 
@@ -41,7 +39,7 @@ function App() {
     
   }
     requestParam.q = searchKeyWord ? searchKeyWord : '';
-    console.log('searchKeyWord ***', searchKeyWord);
+    
     //`https://www.googleapis.com/youtube/v3/search?part=${requestParam.part}&maxResults=${requestParam.maxResults}&q=${requestParam.q}&key=${requestParam.apiKey}`
     fetch(`https://www.googleapis.com/youtube/v3/search?part=${requestParam.part}&maxResults=${requestParam.maxResults}&q=${requestParam.q}&key=${requestParam.apiKey}`, requestOptions)
     .then(response => {
@@ -95,7 +93,7 @@ useEffect(() => {
         <Header handleClick={callSearchAPI}/>
         <section className='youtube__section'>
           <article className={'video__play__view ' + (videoClicked? 'show':'hide')}>
-            <Player videoUrl={videoUrl}/>
+            <Player videoUrl={videoUrl} videoDesc={videoDesc}/>
           </article>
           <article className='video__list__view'>
             <Videos videos={videoData} handleClick = {handleVideoClick} videoClicked={videoClicked} />
