@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import React ,{ useEffect, useState } from 'react';
 import './App.css';
 import Videos from './components/videos';
 import Header from './components/header';
 import Player from './components/player';
-import React from 'react';
 
 function App() {
 
@@ -43,15 +42,17 @@ function App() {
     //`https://www.googleapis.com/youtube/v3/search?part=${requestParam.part}&maxResults=${requestParam.maxResults}&q=${requestParam.q}&key=${requestParam.apiKey}`
     fetch(`https://www.googleapis.com/youtube/v3/search?part=${requestParam.part}&maxResults=${requestParam.maxResults}&q=${requestParam.q}&key=${requestParam.apiKey}`, requestOptions)
     .then(response => {
-      return response.text();
+      return response.json();
     })
     .then((result) => {
-      setVideoData(JSON.parse(result));
+      setVideoData(result.items);
       setIsLoaded(true);
     }, (error) => {
       setIsLoaded(true);
       setError(error);
     })
+
+    setVideoClicked(false);
   }
 
   function callPopularSearchAPI() {
@@ -67,15 +68,16 @@ function App() {
     //`https://www.googleapis.com/youtube/v3/videos?part=${requestParam.part}&chart=${requestParam.chart}&maxResults=${requestParam.maxResults}&key=${requestParam.apiKey}`
     fetch(`https://www.googleapis.com/youtube/v3/videos?part=${requestParam.part}&chart=${requestParam.chart}&maxResults=${requestParam.maxResults}&key=${requestParam.apiKey}`, requestOptions)
     .then(response => {
-      return response.text();
+      return response.json();
     })
     .then((result) => {
-      setVideoData(JSON.parse(result));
+      setVideoData(result.items);
       setIsLoaded(true);
     }, (error) => {
       setIsLoaded(true);
       setError(error);
     })
+    
   }
 
 useEffect(() => {

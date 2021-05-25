@@ -1,4 +1,5 @@
-import React,{ memo } from 'react';
+import React, { memo } from 'react';
+import styles from './video.module.css';
 
 const Video = memo(props => {
     const {id, imgSrc, channel, description } = props;
@@ -13,7 +14,6 @@ const Video = memo(props => {
             .replace(/&quot;/g, '"')
             .replace(/&#039;/g, "'")
             .replace(/&#39;/g, "'");
-        
     }
 
     const handleClick = () => {
@@ -25,11 +25,11 @@ const Video = memo(props => {
     }
     
     return (
-        <li onClick={handleClick}>
-            <img src={imgSrc} />
-            <span className='video_summary'>
-                <span className='video__title'>{title}</span>
-                <span className='video__channel'>{channel}</span>
+        <li className={styles.video} onClick={handleClick}>
+            <img className={styles.image} src={imgSrc} />
+            <span>
+                <span className={styles.title}>{title}</span>
+                <span className={styles.channel}>{channel}</span>
             </span>
         </li>
     );
