@@ -1,0 +1,29 @@
+.video__play__view {
+  float: left;
+  width: 70%;
+  display: none;
+}
+.section {
+  max-width: 80rem;
+}
+.show__view {
+  display: block;
+}
+
+.hide__view {
+  display: none;
+}
+
+.video__desc {
+  margin: 1rem 0;
+  max-width: 600px;
+}
+@media screen and (max-width: 720px) {
+  .section {
+    width: 700px;
+  }
+  .video__desc {
+    max-width: 400px;
+    margin-top: 1rem;
+  }
+}

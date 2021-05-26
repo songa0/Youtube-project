@@ -1,11 +1,12 @@
 import React from 'react';
-import Video from './video/video';
+import Video from '../video/video';
+import styles from './videos.module.css';
 
 const Videos = (props) => {
     const videoData = props.videos;
     
         return (
-            <ul className={'video__list '+ (props.videoClicked?'set1column' : 'set2column')}>
+            <ul className={styles.videos}>
                 {
                     videoData.map(item => (
                         

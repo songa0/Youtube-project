@@ -1,0 +1,47 @@
+.header {
+  color: white;
+  background-color: black;
+  padding: 0.5em;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  width: 100%;
+  max-width: 80rem;
+}
+.logo {
+  width: 2rem;
+  vertical-align: middle;
+}
+
+.title {
+  margin: 0.5em;
+}
+
+.input {
+  width: 550px;
+  height: 30px;
+  padding: 0 4px;
+  border-radius: 2px 2px 0px 0px;
+  outline: 0;
+}
+
+.button {
+  color: white;
+  background-color: rgb(70, 69, 69);
+  border: 0;
+  height: 28px;
+  width: 30px;
+  padding: 0px;
+  margin: 0px;
+  vertical-align: middle;
+}
+
+.buttonImg {
+  width: 50%;
+}
+
+@media screen and (max-width: 720px) {
+  .header {
+    width: 710px;
+  }
+}

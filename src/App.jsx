@@ -1,7 +1,7 @@
 import React ,{ useEffect, useState } from 'react';
-import './App.css';
-import Videos from './components/videos';
-import Header from './components/header';
+import styles from './App.module.css';
+import Videos from './components/videos/videos';
+import Header from './components/header/header';
 import Player from './components/player';
 
 function App() {
@@ -93,11 +93,11 @@ useEffect(() => {
     return (
       <>
         <Header handleClick={callSearchAPI}/>
-        <section className='youtube__section'>
-          <article className={'video__play__view ' + (videoClicked? 'show':'hide')}>
+        <section className={styles.section}>
+          <article className={styles.play__view , (videoClicked? styles.show__view: styles.hide__view)}>
             <Player videoUrl={videoUrl} videoDesc={videoDesc}/>
           </article>
-          <article className='video__list__view'>
+          <article className={styles.list__view}>
             <Videos videos={videoData} handleClick = {handleVideoClick} videoClicked={videoClicked} />
           </article>
         </section>
