@@ -3,5 +3,7 @@
         "titleBar.activeBackground": "#F54133",
         "titleBar.inactiveBackground": "#F54133"
     
-    }
+    },
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true
 }

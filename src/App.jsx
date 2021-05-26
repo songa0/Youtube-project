@@ -41,11 +41,10 @@ function App() {
     
     //`https://www.googleapis.com/youtube/v3/search?part=${requestParam.part}&maxResults=${requestParam.maxResults}&q=${requestParam.q}&key=${requestParam.apiKey}`
     fetch(`https://www.googleapis.com/youtube/v3/search?part=${requestParam.part}&maxResults=${requestParam.maxResults}&q=${requestParam.q}&key=${requestParam.apiKey}`, requestOptions)
-    .then(response => {
-      return response.json();
-    })
-    .then((result) => {
-      setVideoData(result.items);
+    .then(response => response.json())
+    .then(result => result.items.map(item => ({ ...item, id: item.id.videoId}))) //객체 안에 들어있는 id 값을 대체해줌. spread operator
+    .then(items => {
+      setVideoData(items);
       setIsLoaded(true);
     }, (error) => {
       setIsLoaded(true);
@@ -66,13 +65,9 @@ function App() {
     }
     
     //`https://www.googleapis.com/youtube/v3/videos?part=${requestParam.part}&chart=${requestParam.chart}&maxResults=${requestParam.maxResults}&key=${requestParam.apiKey}`
-    fetch(`https://www.googleapis.com/youtube/v3/videos?part=${requestParam.part}&chart=${requestParam.chart}&maxResults=${requestParam.maxResults}&key=${requestParam.apiKey}`, requestOptions)
-    .then(response => {
-      return response.json();
-    })
-    .then((result) => {
-      setVideoData(result.items);
-      setIsLoaded(true);
+    fetch(`https://www.googleapis.com/youtube/v3/videos?part=${requestParam.part}&chart=${requestParam.chart}&type=video&maxResults=${requestParam.maxResults}&key=${requestParam.apiKey}`, requestOptions)
+      .then(response => response.json())  
+    .then(result => {setVideoData(result.items); setIsLoaded(true);
     }, (error) => {
       setIsLoaded(true);
       setError(error);
@@ -91,7 +86,7 @@ useEffect(() => {
     return <div>Loading.....</div>
   } else {
     return (
-      <>
+      <div className={ styles.app}>
         <Header handleClick={callSearchAPI}/>
         <section className={styles.section}>
           <article className={styles.play__view , (videoClicked? styles.show__view: styles.hide__view)}>
@@ -102,7 +97,7 @@ useEffect(() => {
           </article>
         </section>
 
-      </>
+      </div>
     );
   }
 }
