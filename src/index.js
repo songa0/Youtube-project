@@ -1,15 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import '@fortawesome/fontawesome-free/js/all.js';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import "@fortawesome/fontawesome-free/js/all.js";
+import Youtube from "./service/youtube";
+
+const youtube = new Youtube("AIzaSyCbbDVhaJVCx_p2g3xUwD6seqhOGzM7lNg");
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App youtube={youtube} />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
