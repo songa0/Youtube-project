@@ -19,6 +19,12 @@
   margin: 1rem 0;
   max-width: 600px;
 }
+.section {
+  display: flex;
+}
+.floatLeft {
+  float: right;
+}
 @media screen and (max-width: 720px) {
   .section {
     width: 700px;

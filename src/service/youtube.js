@@ -13,14 +13,6 @@ class Youtube {
     )
       .then((response) => response.json())
       .then((result) => result.items);
-
-    // .then(result => {
-    //     setVideoData(result.items);
-    //     setIsLoaded(true);
-    // }, (error) => {
-    //     setIsLoaded(true);
-    //     setError(error);
-    // })
   }
 
   search(query) {
@@ -34,22 +26,6 @@ class Youtube {
       .then((result) =>
         result.items.map((item) => ({ ...item, id: item.id.videoId }))
       ); //객체 안에 들어있는 id 값을 대체해줌. spread operator
-
-    //     .then(items => {
-
-    //         setVideoData(items);
-
-    //         setIsLoaded(true);
-
-    //     }, (error) => {
-
-    //         setIsLoaded(true);
-
-    //         setError(error);
-
-    //     })
-
-    // setVideoClicked(false);
   }
 }
 

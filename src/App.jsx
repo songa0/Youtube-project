@@ -16,6 +16,9 @@ function App({ youtube }) {
     youtube //
       .search(query)
       .then((videos) => setVideoData(videos));
+
+    setIsLoaded(true);
+    setVideoClicked(false);
   };
 
   const handleVideoClick = (videoInfo) => {
