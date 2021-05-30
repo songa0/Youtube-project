@@ -4,7 +4,6 @@ import styles from "./videos.module.css";
 
 const Videos = (props) => {
   const videoData = props.videos;
-
   return (
     <ul className={styles.videos}>
       {videoData.map((item) => (
@@ -16,6 +15,7 @@ const Videos = (props) => {
           channel={item.snippet.channelTitle}
           description={item.snippet.description}
           handleClick={props.handleClick}
+          display={props.display}
         />
       ))}
     </ul>

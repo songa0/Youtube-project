@@ -10,13 +10,12 @@
 }
 
 .video {
-  width: 50%;
   display: flex;
   align-items: center;
   border: 1px solid rgb(122, 122, 122);
   box-shadow: 1px 1px 1px rgb(99, 99, 99);
   margin-bottom: 0.2em;
-  height: 120px;
+  height: 145px;
   break-inside: avoid;
   cursor: pointer;
   transition: transform 250ms ease-in;
@@ -30,4 +29,12 @@
   min-width: 40%;
   height: 100%;
   margin: 0 1em 0 0.5em;
+}
+
+.list {
+  width: 100%;
+}
+
+.grid {
+  width: 50%;
 }

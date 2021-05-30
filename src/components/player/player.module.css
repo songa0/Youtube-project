@@ -1,0 +1,6 @@
+.desc {
+  margin: 1rem 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow: auto;
+}

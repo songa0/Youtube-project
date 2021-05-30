@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import styles from "./App.module.css";
 import Videos from "./components/videos/videos";
 import Header from "./components/header/header";
-import Player from "./components/player";
+import Player from "./components/player/player";
 
 function App({ youtube }) {
   const [videoData, setVideoData] = useState([]);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [videoUrl, setVideoUrl] = useState(null);
+  const [videoInfo, setVideoInfo] = useState(null);
   const [videoClicked, setVideoClicked] = useState(false);
   const [videoDesc, setVideoDesc] = useState(null);
 
@@ -22,8 +23,7 @@ function App({ youtube }) {
   };
 
   const handleVideoClick = (videoInfo) => {
-    setVideoUrl(videoInfo.id);
-    setVideoDesc(videoInfo.description);
+    setVideoInfo(videoInfo);
     setVideoClicked(true);
   };
 
@@ -44,19 +44,16 @@ function App({ youtube }) {
       <div className={styles.app}>
         <Header handleClick={search} />
         <section className={styles.section}>
-          <article
-            className={
-              (styles.play__view,
-              videoClicked ? styles.show__view : styles.hide__view)
-            }
-          >
-            <Player videoUrl={videoUrl} videoDesc={videoDesc} />
-          </article>
-          <article className={styles.list__view}>
+          {videoClicked && (
+            <article className={styles.show__view}>
+              <Player videoInfo={videoInfo} />
+            </article>
+          )}
+          <article className={videoClicked ? styles.listView : ""}>
             <Videos
               videos={videoData}
               handleClick={handleVideoClick}
-              videoClicked={videoClicked}
+              display={videoClicked ? "list" : "grid"}
             />
           </article>
         </section>
