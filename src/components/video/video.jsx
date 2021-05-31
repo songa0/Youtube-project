@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 import styles from "./video.module.css";
 
 const Video = memo((props) => {
@@ -27,7 +27,7 @@ const Video = memo((props) => {
 
   return (
     <li className={`${styles.video} ${displayType}`} onClick={handleClick}>
-      <img className={styles.image} src={imgSrc} />
+      <img className={styles.image} src={imgSrc} alt="videoImg" />
       <span>
         <span className={styles.title}>{title}</span>
         <span className={styles.channel}>{channel}</span>

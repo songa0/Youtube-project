@@ -1,18 +1,18 @@
 import React, { memo } from "react";
-import ReactPlayer from "react-player";
+//import ReactPlayer from "react-player";
 import styles from "./player.module.css";
 
 const Player = memo((props) => {
   const { id, channel, title, description } = props.videoInfo;
-  console.log(props);
+
   return (
     <>
       <iframe
         type="text/html"
-        width="100%"
-        height="450px"
         src={`https://youtube.com/embed/${id}`}
         frameBorder="0"
+        title="youtube video player"
+        className={styles.player}
         allowFullScreen
       ></iframe>
       {/* <ReactPlayer

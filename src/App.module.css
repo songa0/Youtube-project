@@ -18,9 +18,10 @@
 .floatLeft {
   float: right;
 }
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 820px) {
   .section {
     width: 700px;
+    flex-direction: column;
   }
   .video__desc {
     max-width: 400px;
