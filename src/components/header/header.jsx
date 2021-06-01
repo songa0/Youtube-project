@@ -12,6 +12,7 @@ const Header = memo((props) => {
       handleClick();
     }
   };
+
   return (
     <header className={styles.header}>
       <img className={styles.logo} src="/images/logo.png" alt="logoImg" />

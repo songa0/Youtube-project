@@ -1,30 +1,35 @@
+import axios from "axios";
+
 class Youtube {
   constructor(key) {
-    this.key = key;
-    this.getRequestOptions = {
-      method: "GET",
-      redirect: "follow",
-    };
+    this.youtube = axios.create({
+      baseURL: "https://www.googleapis.com/youtube/v3",
+      params: { key: key },
+    });
   }
   async mostPopular() {
-    const response = await fetch(
-      `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&type=video&maxResults=25&key=${this.key}`,
-      this.getRequestOptions
-    );
-    const result_1 = await response.json();
-    return result_1.items;
+    const response = await this.youtube.get("videos", {
+      params: {
+        part: "snippet",
+        chart: "mostPopular",
+        maxResults: 24,
+        type: "video",
+      },
+    });
+    return response.data.items;
   }
 
   async search(query) {
-    query = query ? query : "";
-
-    const response = await fetch(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=25&q=${query}&key=${this.key}`,
-      this.getRequestOptions
-    );
-    const result_1 = await response.json();
-    return result_1.items.map((item) => ({ ...item, id: item.id.videoId })); //객체 안에 들어있는 id 값을 대체해줌. spread operator
+    const response = await this.youtube.get("search", {
+      params: {
+        part: "snippet",
+        chart: "mostPopular",
+        maxResults: 24,
+        type: "video",
+        q: query,
+      },
+    });
+    return response.data.items;
   }
 }
-
 export default Youtube;

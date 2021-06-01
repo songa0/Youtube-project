@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "./App.module.css";
 import Videos from "./components/videos/videos";
 import Header from "./components/header/header";
@@ -6,16 +6,20 @@ import Player from "./components/player/player";
 
 function App({ youtube }) {
   const [videoData, setVideoData] = useState([]);
-  const [videoInfo, setVideoInfo] = useState(null);
+  const [videoInfo, setVideoInfo] = useState([]);
   const [videoClicked, setVideoClicked] = useState(false);
 
-  const search = (query) => {
-    youtube //
-      .search(query)
-      .then((videos) => setVideoData(videos));
+  const search = useCallback(
+    //props로 자식 컨포넌트에 콜백함수를 전달할때는 rerender가 발생됨. -> useCallback을 사용하여 rerender되지 않도록 함.
+    (query) => {
+      youtube //
+        .search(query)
+        .then((videos) => setVideoData(videos));
 
-    setVideoClicked(false);
-  };
+      setVideoClicked(false);
+    },
+    [youtube]
+  );
 
   const handleVideoClick = (videoInfo) => {
     setVideoInfo(videoInfo);
@@ -33,7 +37,7 @@ function App({ youtube }) {
       <Header handleClick={search} />
       <section className={styles.section}>
         {videoClicked && (
-          <article className={styles.show__view}>
+          <article className={styles.showView}>
             <Player videoInfo={videoInfo} />
           </article>
         )}
