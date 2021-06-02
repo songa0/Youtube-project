@@ -1,9 +1,8 @@
 import React, { memo } from "react";
 import styles from "./video.module.css";
 
-const Video = memo((props) => {
-  const { id, imgSrc, channel, description, display } = props;
-  const title = ConvertSystemSourcetoHtml(props.title);
+const Video = memo(({ video, video: { snippet }, handleClick, display }) => {
+  const title = ConvertSystemSourcetoHtml(snippet.title);
   const displayType = display === "list" ? styles.list : styles.grid;
   function ConvertSystemSourcetoHtml(str) {
     return str
@@ -15,22 +14,19 @@ const Video = memo((props) => {
       .replace(/&#39;/g, "'");
   }
 
-  const handleClick = () => {
-    const videoInfo = {
-      id,
-      description,
-      title,
-      channel,
-    };
-    props.handleClick(videoInfo);
-  };
-
   return (
-    <li className={`${styles.video} ${displayType}`} onClick={handleClick}>
-      <img className={styles.image} src={imgSrc} alt="videoImg" />
+    <li
+      className={`${styles.video} ${displayType}`}
+      onClick={() => handleClick(video)}
+    >
+      <img
+        className={styles.image}
+        src={snippet.thumbnails.medium.url}
+        alt="videoImg"
+      />
       <span>
         <span className={styles.title}>{title}</span>
-        <span className={styles.channel}>{channel}</span>
+        <span className={styles.channel}>{snippet.channelTitle}</span>
       </span>
     </li>
   );

@@ -2,14 +2,14 @@ import React, { memo } from "react";
 //import ReactPlayer from "react-player";
 import styles from "./player.module.css";
 
-const Player = memo((props) => {
-  const { id, channel, title, description } = props.videoInfo;
-
+const Player = memo(({ videoInfo, videoInfo: { snippet } }) => {
+  const { description, title, channelTitle } = snippet;
+  console.log(description);
   return (
     <>
       <iframe
         type="text/html"
-        src={`https://youtube.com/embed/${id}`}
+        src={`https://youtube.com/embed/${videoInfo.id}`}
         frameBorder="0"
         title="youtube video player"
         className={styles.player}
@@ -23,17 +23,8 @@ const Player = memo((props) => {
       /> */}
       <div className={styles.desc}>
         <h2>{title}</h2>
-        <h3>{channel}</h3>
-        {description
-          ? description.split("\n").map((word) => {
-              return (
-                <span>
-                  {word}
-                  <br />
-                </span>
-              );
-            })
-          : ""}
+        <h3>{channelTitle}</h3>
+        <pre className={styles.description}>{description}</pre>
       </div>
     </>
   );
