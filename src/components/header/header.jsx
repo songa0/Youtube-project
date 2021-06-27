@@ -13,9 +13,10 @@ const Header = memo((props) => {
     }
   };
 
+
   return (
     <header className={styles.header}>
-      <img className={styles.logo} src="/images/logo.png" alt="logoImg" />
+      <img className={styles.logo} src="/images/logo.png" alt="logoImg" onClick={props.viewMode}/>
       <span className={styles.title}>Youtube</span>
       <input
         ref={inputRef}

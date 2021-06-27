@@ -32,9 +32,12 @@ function App({ youtube }) {
       .then((videos) => setVideoData(videos));
   }, [youtube]);
 
+const logoClicked = ()=>{
+  setVideoClicked(false);
+}
   return (
     <div className={styles.app}>
-      <Header handleClick={search} />
+      <Header handleClick={search} viewMode={logoClicked}/>
       <section className={styles.section}>
         {videoClicked && (
           <article className={styles.showView}>
