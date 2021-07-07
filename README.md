@@ -16,4 +16,6 @@
 - 동영상 재생 화면
   ![image](https://user-images.githubusercontent.com/17793440/123561467-665f4600-d7e3-11eb-97e5-58067e75da3e.png)
 
-3. 배운점
+3. 알게된 지식  
+ - Postman의 사용법.
+ - Router를 이용하여 SPA를 만들 수 있음.  
